@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255'
-//            'is_completed' => 'required|boolean'
+//     'is_completed' => 'required|boolean'
         ];
     }
 

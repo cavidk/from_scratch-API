@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class TaskController extends Controller
 {
@@ -27,8 +27,8 @@ class TaskController extends Controller
      * */
     public function store(StorePostRequest $request)
     {
-           $task = Task::create($request->validated());
-              return TaskResource::make($task);
+        $task = Task::create($request->validated());
+        return TaskResource::make($task);
 
     }
 
@@ -47,18 +47,21 @@ class TaskController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $task->update($request->validated());
+
+        return TaskResource::make($task);
+
     }
 
     /**
      * Remove the specified resource from storage.
-     *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         //
     }

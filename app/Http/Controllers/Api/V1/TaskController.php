@@ -57,12 +57,12 @@ class TaskController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param int $id
+     * @param int $task
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy($id)
+    public function destroy(Task $task)
     {
-        //
+     $task->delete();
+     return response()->noContent();
     }
 }
